@@ -1,10 +1,4 @@
 
-#cd /usr/share/nginx/html
-#
-#ECHO "Removing Old Files"
-#rm -rf * &>>${LOG_FILE}
-#statusCheck $?
-#
 #ECHO "Extracting Zip Content"
 #unzip /tmp/frontend.zip &>>${LOG_FILE}
 #statusCheck $?
@@ -44,3 +38,8 @@
     path: /usr/share/nginx/html
     state: absent
 
+- name: Extract Frontend Content
+  ansible.builtin.unarchive:
+    src: /tmp/frontend.zip
+    dest: /tmp
+    remote_src: yes
