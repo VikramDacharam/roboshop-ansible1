@@ -1,8 +1,4 @@
-#
-#ECHO "Installing Nginx"
-#yum install nginx -y &>>${LOG_FILE}
-#statusCheck $?
-#
+
 #ECHO "Downloading Frontend Code"
 #curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>${LOG_FILE}
 #statusCheck $?
@@ -41,4 +37,9 @@
   yum:
     name: nginx
     state: installed
+
+- name: Download Frontend Code
+  get_url:
+    url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp/frontend.zip
 
