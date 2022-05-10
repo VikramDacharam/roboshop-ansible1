@@ -33,5 +33,5 @@ aws route53 change-resource-record-sets --hosted-zone-id Z07578712H75FS9NNU2HC -
 echo DNS Record Created
 
 touch inv
-sed -i -e '/frontend/,+1 d' inv
+sed -i -e "/${NAME}/,+1 d" inv
 echo -e "[${NAME}]\n${IPADDRESS}" >>inv
