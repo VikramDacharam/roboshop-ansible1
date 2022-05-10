@@ -1,28 +1,3 @@
-
-#ECHO "Extracting Zip Content"
-#unzip /tmp/frontend.zip &>>${LOG_FILE}
-#statusCheck $?
-#
-#ECHO "Copying extracted Content"
-#mv frontend-main/* . &>>${LOG_FILE} && mv static/* . &>>${LOG_FILE} && rm -rf frontend-main README.md &>>${LOG_FILE}
-#statusCheck $?
-#
-#ECHO "Copy RoboShop Nginx Config"
-#mv localhost.conf /etc/nginx/default.d/roboshop.conf &>>${LOG_FILE}
-#statusCheck $?
-#
-#ECHO "Update Nginx Configuration"
-#for component in catalogue user cart shipping payment ; do
-#ECHO "Update Configuration for ${component}"
-#sed -i -e "/${component}/ s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
-#statusCheck $?
-#done
-#
-#ECHO "Start Nginx Service"
-#systemctl enable nginx &>>${LOG_FILE} && systemctl restart nginx &>>${LOG_FILE}
-#statusCheck $?
-#
-
 - name: Install Nginx
   yum:
     name: nginx
@@ -44,4 +19,15 @@
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html/
     remote_src: yes
+
+- name: Copy Nginx RoboShop Configuration
+  ansible.builtin.template:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Start Nginx Service
+  ansible.builtin.systemd:
+    state: restarted
+    name: nginx
+    enabled: yes
 
