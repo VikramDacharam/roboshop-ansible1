@@ -1,5 +1,5 @@
 - name: RobShop Setup Playbook
   hosts: "{{ HOST }}"
   roles:
-    - "{{ role_name }}"
+    - "{{ ROLE_NAME }}"
 
