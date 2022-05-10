@@ -43,3 +43,10 @@
     src: /tmp/frontend.zip
     dest: /tmp
     remote_src: yes
+
+- name: Copy Frontend Code
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html/
+    remote_src: yes
+
