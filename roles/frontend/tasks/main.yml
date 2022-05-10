@@ -1,8 +1,4 @@
 
-#ECHO "Downloading Frontend Code"
-#curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" &>>${LOG_FILE}
-#statusCheck $?
-#
 #cd /usr/share/nginx/html
 #
 #ECHO "Removing Old Files"
@@ -42,4 +38,9 @@
   get_url:
     url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
     dest: /tmp/frontend.zip
+
+- name: Remove old content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
 
