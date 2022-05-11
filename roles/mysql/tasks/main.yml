@@ -15,14 +15,12 @@
     enabled: yes
 
 - name: "Searching for a String"
-  lineinfile:
-    path: /var/log/mysqld.log
-    line: '(.*)A temporary password(.*)'
-    state: present
-  check_mode: yes
-  register: presence
+  ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
+  register: DEFAULT_PASSWORD
 
-- name: print
-  debug:
-    msg: "{{presence}}"
+- name: Check MySQL Working with NEW Credentisls or not
+  mysql_info:
+    login_user: root
+    login_password: RoboShop@1
+    filter: version
 
