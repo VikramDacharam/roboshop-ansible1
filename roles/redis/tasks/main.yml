@@ -1,8 +1,3 @@
-
-#ECHO "Start Redis Service"
-#systemctl enable redis &>>${LOG_FILE} && systemctl restart redis &>>${LOG_FILE}
-#statusCheck $?
-
 - name: Copy Redis YUM repo file
   ansible.builtin.copy:
     src: redis.repo
