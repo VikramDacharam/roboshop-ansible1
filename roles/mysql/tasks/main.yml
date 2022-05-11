@@ -14,3 +14,15 @@
     state: started
     enabled: yes
 
+- name: "Searching for a String"
+  lineinfile:
+    path: /var/log/mysqld.log
+    line: 'A temporary password'
+    state: present
+  check_mode: yes
+  register: presence
+
+- name: print
+  debug:
+    msg: "{{presence}}"
+
