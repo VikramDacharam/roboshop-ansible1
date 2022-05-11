@@ -27,4 +27,15 @@
     filter: version
   ignore_errors: true
 
+- name: Copy MySQL Password reset sql file
+  ansible.builtin.copy:
+    src: password-reset.sql
+    dest: /tmp/password-reset.sql
+
+- name: Reset the password
+  mysql_db:
+    state: import
+    name: all
+    target: /tmp/password-reset.sql
+
 
