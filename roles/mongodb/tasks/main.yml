@@ -1,11 +1,3 @@
-
-#cd mongodb-main
-#ECHO "Load Schema"
-#for component in catalogue users ; do
-#mongo < ${component}.js >>${LOG_FILE}
-#done
-#statusCheck $?
-
 - name: Copy MongoDB yum repo file
   ansible.builtin.copy:
     src: mongodb.repo
@@ -36,5 +28,8 @@
 
 - name: Load Schema
   community.mongodb.mongodb_shell:
-    file: "/path/to/mongo/file.js"
+    file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
+  loop:
+    - catalogue
+    - users
