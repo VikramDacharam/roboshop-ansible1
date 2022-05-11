@@ -33,11 +33,8 @@
     dest: /tmp/password-reset.sql
 
 - name: Reset the password
-  mysql_db:
-    login_user: root
-    login_password: "{{DEFAULT_PASSWORD.stdout}}"
-    state: import
-    name: all
-    target: /tmp/password-reset.sql
+  ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql
+  
+
 
 
