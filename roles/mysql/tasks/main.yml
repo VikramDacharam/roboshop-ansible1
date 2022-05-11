@@ -25,4 +25,6 @@
     login_user: root
     login_password: RoboShop@1
     filter: version
+  ignore_errors: true
+
 
