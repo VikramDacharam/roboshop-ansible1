@@ -1,0 +1,5 @@
+- name: Reload
+  ansible.builtin.systemd:
+    name: "{{COMPONENT}}"
+    daemon_reload: true
+
