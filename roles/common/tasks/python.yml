@@ -23,6 +23,7 @@
     line: uid = {{item.value}}
   loop:
     - { string: "^uid=", value: "{{APPUSER.uid}}" }
+    - { string: "^gid=", value: "{{APPUSER.group}}" }
 
 
 - name: SystemD Setup
