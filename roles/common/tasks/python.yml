@@ -19,14 +19,11 @@
 - name: Update Application Configuration - User Infor
   ansible.builtin.lineinfile:
     path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
-    regexp: '^uid='
-    line: uid = {{APPUSER.uid}}
+    regexp: "{{item.string}}"
+    line: uid = {{item.value}}
+  loop:
+    - { string: "^uid=", value: {{APPUSER.uid}} }
 
-- name: Update Application Configuration - Group Infor
-  ansible.builtin.lineinfile:
-    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
-    regexp: '^gid='
-    line: uid = {{APPUSER.group}}
 
 - name: SystemD Setup
   import_role:
