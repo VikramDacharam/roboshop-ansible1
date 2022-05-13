@@ -26,6 +26,12 @@
     login_password: RoboShop@1
     filter: version
   ignore_errors: true
+  register: status
+
+- name: prunt
+  debug:
+    msg: "{{status}}"
+    
 
 - name: Copy MySQL Password reset sql file
   ansible.builtin.copy:
@@ -34,7 +40,7 @@
 
 - name: Reset the password
   ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql
-  
+
 
 
 
