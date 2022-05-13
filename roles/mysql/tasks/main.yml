@@ -16,10 +16,6 @@
     state: started
     enabled: yes
 
-- name: "Searching for a String"
-  ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
-  register: DEFAULT_PASSWORD
-
 - name: Check MySQL Working with NEW Credentisls or not
   mysql_info:
     login_user: root
@@ -34,6 +30,10 @@
     dest: /tmp/password-reset.sql
   when: status.failed | bool
 
+- name: Grab Default Password
+  ansible.builtin.shell: grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}'
+  register: DEFAULT_PASSWORD
+  when: status.failed | bool
 
 - name: Reset the password
   ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql
