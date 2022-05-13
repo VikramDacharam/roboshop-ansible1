@@ -1,5 +1,5 @@
 - name: Include Python from role
   import_role:
     name: common
-    tasks_from: java
+    tasks_from: python
 
