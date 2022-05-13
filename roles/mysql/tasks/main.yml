@@ -28,18 +28,16 @@
   ignore_errors: true
   register: status
 
-- name: prunt
-  debug:
-    msg: "{{status}}"
-    
-
 - name: Copy MySQL Password reset sql file
   ansible.builtin.copy:
     src: password-reset.sql
     dest: /tmp/password-reset.sql
+  when: status.failed | bool
+
 
 - name: Reset the password
   ansible.builtin.shell: mysql --connect-expired-password -u root -p{{DEFAULT_PASSWORD.stdout}} </tmp/password-reset.sql
+  when: status.failed | bool
 
 
 
