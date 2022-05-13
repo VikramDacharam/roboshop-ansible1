@@ -11,7 +11,7 @@
 - name: Download from Github
   import_role:
     name: common
-    tasks_from: downlaod-from-github
+    tasks_from: download-from-github
 
 - name: Install NodeJS Dependencies
   community.general.npm:
