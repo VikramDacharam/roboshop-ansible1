@@ -20,7 +20,7 @@
       - botocore
       - boto3
     executable: pip3
-    
+
 - name: Configure application user
   community.rabbitmq.rabbitmq_user:
     user: "{{SECRET.RABBITMQ_USER}}"
