@@ -14,6 +14,13 @@
     state: restarted
     enabled: yes
 
+- name: Install Python Modules
+  pip:
+    name:
+      - botocore
+      - boto3
+    executable: pip3
+    
 - name: Configure application user
   community.rabbitmq.rabbitmq_user:
     user: "{{SECRET.RABBITMQ_USER}}"
