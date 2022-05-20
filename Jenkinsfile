@@ -1,10 +1,15 @@
+@Library('roboshop-library') _
+
+log.info 'Starting'
+log.warning 'Nothing to do!'
+
 pipeline {
   agent any
 
   options {
     ansiColor('xterm')
   }
-  
+
   parameters {
     string(name: 'ENV', defaultValue: '', description: 'Which Environment?')
     string(name: 'COMPONENT', defaultValue: '', description: 'Which Component?')
