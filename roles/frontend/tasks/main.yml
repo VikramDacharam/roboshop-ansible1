@@ -1,3 +1,7 @@
+- name: DEMO
+  debug:
+    msg: DEMO
+    
 - name: Install Nginx
   yum:
     name: nginx
