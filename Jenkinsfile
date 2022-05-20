@@ -15,6 +15,7 @@ pipeline {
     stage('Create Instance') {
       steps {
         sh 'bash create-ec2-with-env.sh ${COMPONENT} ${ENV}'
+        sh 'ls -ltr'
       }
     }
 
