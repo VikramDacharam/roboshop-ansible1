@@ -1,8 +1,5 @@
 @Library('roboshop-library') _
 
-log.info 'Starting'
-log.warning 'Nothing to do!'
-
 pipeline {
   agent any
 
@@ -23,7 +20,9 @@ pipeline {
 
     stage('Create Instance') {
       steps {
-        sh 'bash create-ec2-with-env.sh ${COMPONENT} ${ENV}'
+        script {
+          ec2InstanceCreate.create("${COMPONENT}", "${ENV}")
+        }
       }
     }
 
