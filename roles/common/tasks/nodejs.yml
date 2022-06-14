@@ -17,6 +17,12 @@
   community.general.npm:
     path: /home/roboshop/{{COMPONENT}}
 
+- name: Download DocDB Pem file
+  get_url:
+    url: https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem
+    dest: /home/roboshop/{{COMPONENT}}/rds-combined-ca-bundle.pem
+  when: DBTYPE == "DOCUMENTDB"
+
 - name: SystemD Setup
   import_role:
     name: common
