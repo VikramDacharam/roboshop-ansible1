@@ -14,7 +14,7 @@
       - botocore
       - boto3
     executable: pip3
-    
+
 - name: Download from Github
   import_role:
     name: common
