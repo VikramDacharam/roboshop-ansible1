@@ -1,1 +1,3 @@
 COMPONENT: user
+DBTYPE: MONGO
+DB_URL: mongodb-{{ENV}}.roboshop.internal
