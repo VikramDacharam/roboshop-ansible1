@@ -3,7 +3,7 @@ Description = User Service
 [Service]
 User=roboshop
 Environment={{DBTYPE}}=true
-Environment=REDIS_HOST=redis-{{ENV}}.roboshop.internal
+Environment=REDIS_HOST=user-redis-{{ENV}}.roboshop.internal
 {% if DBTYPE == "MONGO" %}
 Environment=MONGO_URL="mongodb://mongodb-{{ENV}}.roboshop.internal:27017/users"
 {% else %}
