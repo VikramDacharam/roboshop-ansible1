@@ -1,0 +1,6 @@
+- name: Setup Prometheus Server
+  import_role:
+    name: prometheus
+    tasks_from: server
+  when: COMPONENT == "prometheus-server"
+
