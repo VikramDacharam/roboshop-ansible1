@@ -39,5 +39,5 @@
   wait_for:
     port: 9093
     host: 0.0.0.0
-    delay: 20
+    delay: 10
     timeout: 30
