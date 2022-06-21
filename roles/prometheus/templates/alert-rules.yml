@@ -8,4 +8,5 @@ groups:
           severity: critical
         annotations:
           {% raw %}summary: "Instance Down - [{{ $labels.instance}}]"{% endraw %}
+          
           {% raw %}description: "Instance Down - [{{ $labels.instance}}]"{% endraw %}
