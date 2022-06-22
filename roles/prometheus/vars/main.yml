@@ -1,0 +1,8 @@
+components:
+  - {name: "Catalogue", serviceName: "catalogue"}
+  - {name: "Cart", serviceName: "cart"}
+  - {name: "User", serviceName: "user"}
+  - {name: "Shipping", serviceName: "shipping"}
+  - {name: "Payment", serviceName: "payment"}
+  - {name: "Frontend", serviceName: "nginx"}
+
