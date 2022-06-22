@@ -22,5 +22,5 @@ groups:
           {% raw %}summary: "Service Down - [{{ $labels.instance}}]"{% endraw %}
 
           {% raw %}description: "Service Down - [{{ $labels.instance}}]"{% endraw %}
-          
+
 {% endfor %}
