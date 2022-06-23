@@ -1,1 +1,16 @@
-- name: I
+- name: Copy filebeat repo file
+  ansible.builtin.copy:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+
+- name: Install Filebeat
+  ansible.builtin.yum:
+    name: filebeat
+    state: installed
+
+- name: Start Filebeat
+  ansible.builtin.systemd:
+    name: filebeat
+    state: restarted
+    enabled: yes
+
