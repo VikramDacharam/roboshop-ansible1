@@ -30,6 +30,7 @@
     state: restarted
     name: nginx
     enabled: yes
+  ignore_errors: yes 
 
 - name: Setup Prometheus Node Exporter
   import_role:
