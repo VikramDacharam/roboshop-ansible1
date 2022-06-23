@@ -35,11 +35,3 @@
   import_role:
     name: common
     tasks_from: systemd
-
-- name: Setup Prometheus Node Exporter
-  import_role:
-    name: prometheus
-    tasks_from: nodeexporter.yml
-
-
-
