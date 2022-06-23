@@ -1,2 +1,19 @@
 #https://grokdebug.herokuapp.com/
 #https://grokdebug.herokuapp.com/patterns
+- name: Copy logstash
+  template:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+
+- name: Restart Logstash
+  systemd:
+    name: logstash
+    state: restarted
+
+- name: Wait for Logstash port
+  wait_for:
+    port: 5044
+    host: 0.0.0.0
+    delay: 45
+    timeout: 60
+
