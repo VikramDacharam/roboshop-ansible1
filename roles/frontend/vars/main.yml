@@ -1,1 +1,3 @@
 COMPONENT: frontend
+LOG_TYPE: plain
+LOGFILE: /var/log/nginx/access.log

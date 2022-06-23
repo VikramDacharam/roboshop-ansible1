@@ -1,3 +1,4 @@
 COMPONENT: catalogue
 DBTYPE: MONGO
 DB_URL: mongodb-{{ENV}}.roboshop.internal
+LOG_TYPE: json

@@ -1,3 +1,13 @@
+- name: Copy Rsyslog
+  template:
+    src: roboshop.conf
+    dest: /etc/rsyslog.d/roboshop.conf
+
+- name: Restart rsyslog
+  systemd:
+    name: rsyslog
+    state: restarted
+
 - name: Copy filebeat repo file
   ansible.builtin.copy:
     src: elastic.repo
