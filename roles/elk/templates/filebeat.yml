@@ -3,6 +3,9 @@ filebeat.inputs:
   enabled: true
   paths:
     - {{LOGFILE}}
+{% if COMPONENT == 'payment' %}
+  include_lines: ['^\[2']
+{% endif %}
   fields:
     componentName: {{COMPONENT}}
     environment: {{ENV}}
