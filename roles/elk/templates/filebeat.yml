@@ -12,6 +12,9 @@ filebeat.inputs:
   multiline.negate: true
   multiline.match: after
 {% endif %}
+{% if LOG_TYPE == 'json' %}
+  json.keys_under_root: true
+{% endif %}
   fields:
     componentName: {{COMPONENT}}
     environment: {{ENV}}
