@@ -6,6 +6,12 @@ filebeat.inputs:
 {% if COMPONENT == 'payment' %}
   include_lines: ['^\[2']
 {% endif %}
+{% if COMPONENT == 'payment' %}
+  multiline.type: pattern
+  multiline.pattern: '^2'
+  multiline.negate: true
+  multiline.match: after
+{% endif %}
   fields:
     componentName: {{COMPONENT}}
     environment: {{ENV}}
