@@ -18,6 +18,7 @@
   ansible.builtin.file:
     path: /home/roboshop/{{COMPONENT}}
     state: directory
+  become_user: roboshop
 
 - name: Download & Extract {{COMPONENT}} Content
   ansible.builtin.unarchive:
