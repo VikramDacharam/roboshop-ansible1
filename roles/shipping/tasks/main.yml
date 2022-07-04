@@ -1,3 +1,11 @@
+- name: Caluclate memory
+  shell: echo "{{ansible_memtotal_mb}} * 80 / 100" | bc
+  register: out
+
+- name: Declare memory variable
+  set_fact:
+    MEM: "{{out.stdout}}"
+
 - name: Include Java from role
   import_role:
     name: common
