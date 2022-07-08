@@ -4,7 +4,7 @@
 
 - name: Declare memory variable
   set_fact:
-    MEM: "{{out.stdout}}"
+    MEM: "MEM"
 
 - name: Include Java from role
   import_role:
