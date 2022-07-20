@@ -42,12 +42,4 @@
     enabled: yes
   ignore_errors: yes
 
-- name: Setup Prometheus Node Exporter
-  import_role:
-    name: prometheus
-    tasks_from: nodeexporter.yml
 
-- name: Setup Filebeat
-  import_role:
-    name: elk
-    tasks_from: filebeat.yml
