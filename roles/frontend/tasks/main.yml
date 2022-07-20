@@ -15,15 +15,15 @@
 
 - name: Download & Extract Frontend Content
   ansible.builtin.unarchive:
-    src: http://172.31.12.154:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
-    dest: /usr/share/nginx/html/
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp
     remote_src: yes
 
-#- name: Copy Frontend Code
-#  ansible.builtin.copy:
-#    src: /tmp/frontend-main/static/
-#    dest: /usr/share/nginx/html/
-#    remote_src: yes
+- name: Copy Frontend Code
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html/
+    remote_src: yes
 
 - name: Copy Nginx Configuration
   ansible.builtin.template:
