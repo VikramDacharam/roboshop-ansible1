@@ -25,7 +25,7 @@
 
 - name: Update Application Configuration
   ansible.builtin.lineinfile:
-    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.init
     regexp: "{{item.string}}"
     line: uid = {{item.value}}
   loop:
